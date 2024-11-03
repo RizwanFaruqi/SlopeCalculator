@@ -3,7 +3,8 @@ public class LinearEquation {
     private int y1;
     private int x2;
     private int y2;
-
+    private double slope;
+    private double yInt;
 
     public LinearEquation(int x1, int y1, int x2, int y2) {
         this.x1 = x1;
@@ -12,15 +13,29 @@ public class LinearEquation {
         this.y2 = y2;
     }
 
-
     public void Distance() {
-        double v = Math.pow(x2-x1, 2);
-        double w = Math.pow(y2-y1, 2);
-        double z = Math.sqrt(v+w);
+        double v = Math.pow(x2 - x1, 2);
+        double w = Math.pow(y2 - y1, 2);
+        double z = Math.sqrt(v + w);
     }
 
+    public double Slope() {
+        slope = (double) (y2 - y1) / (x2 - x1);
+        return slope;
+    }
 
-    public void Slope() {
-        double slope = (double) (y2 - y1) / (x2-x1);
+    public double yIntercept() {
+        return y1 - slope * x1;
+    }
+
+    public String equation() {
+
+        if (y1 == y2) {
+            return "y = " + yInt;
+        } else {
+            String rightSide = slope + " x " + " + " + yInt;
+            String total = "y=" + rightSide;
+            return total;
+        }
     }
 }

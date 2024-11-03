@@ -2,13 +2,17 @@ import java.util.Scanner;
 public class LinearEquationLogic {
     private LinearEquation lineEQ;
     private Scanner myScanner;
+
     public LinearEquationLogic() {
         lineEQ = null;
         myScanner = new Scanner(System.in);
     }
+
     public void start() {
         getLineInfo();
     }
+
+
     private void getLineInfo () {
         System.out.print("Enter x1");
         int x1a = myScanner.nextInt();
