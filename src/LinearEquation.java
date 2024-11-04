@@ -7,6 +7,9 @@ public class LinearEquation {
     private double yInt;
     private double distance;
 
+    private double roundedToHundredth(double toRound) {
+        return Math.round(toRound * 100.0) / 100.0;
+    }
 
     public LinearEquation(int x1, int y1, int x2, int y2) {
         this.x1 = x1;
@@ -19,7 +22,7 @@ public class LinearEquation {
         double v = Math.pow(x2 - x1, 2);
         double w = Math.pow(y2 - y1, 2);
         double distance = Math.sqrt(v + w);
-        return distance;
+        return roundedToHundredth(distance);
     }
 
     public double Slope() {
@@ -28,11 +31,12 @@ public class LinearEquation {
         } else {
             slope = (double) (y2 - y1) / (x2 - x1);
         }
-        return slope;
+        return roundedToHundredth(slope);
     }
 
     public double yIntercept() {
-        return y1 - slope * x1;
+        yInt= y1 - slope * x1;
+        return roundedToHundredth(yInt);
     }
 
     public String equation() {
@@ -58,5 +62,12 @@ public class LinearEquation {
                 "The distance between these points is " + Distance() + "\n";
     }
 
+    public String coordinateForX(double x) {
+       double yCord =  slope*x + yInt;
+       yCord = roundedToHundredth(yCord);
+       String stringYCord = Double.toString(yCord);
+       String stringX = Double.toString(x);
+       return (stringX + " , " + stringYCord);
+    }
 
 }
