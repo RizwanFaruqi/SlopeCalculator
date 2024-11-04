@@ -5,6 +5,8 @@ public class LinearEquation {
     private int y2;
     private double slope;
     private double yInt;
+    private double distance;
+
 
     public LinearEquation(int x1, int y1, int x2, int y2) {
         this.x1 = x1;
@@ -13,14 +15,19 @@ public class LinearEquation {
         this.y2 = y2;
     }
 
-    public void Distance() {
+    public double Distance() {
         double v = Math.pow(x2 - x1, 2);
         double w = Math.pow(y2 - y1, 2);
-        double z = Math.sqrt(v + w);
+        double distance = Math.sqrt(v + w);
+        return distance;
     }
 
     public double Slope() {
-        slope = (double) (y2 - y1) / (x2 - x1);
+        if (x1 == x2) {
+            slope = 0;
+        } else {
+            slope = (double) (y2 - y1) / (x2 - x1);
+        }
         return slope;
     }
 
@@ -29,13 +36,27 @@ public class LinearEquation {
     }
 
     public String equation() {
-
+        String equation = "";
         if (y1 == y2) {
-            return "y = " + yInt;
+            equation = "y = " + yInt;
         } else {
-            String rightSide = slope + " x " + " + " + yInt;
-            String total = "y=" + rightSide;
-            return total;
+            equation = slope + "x";
+            if (yInt > 0) {
+                equation += "+" + yInt;
+            } else {
+                equation += " " + yInt;
+            }
         }
+        return equation;
     }
+
+    public String lineInfo() {
+        return "The two points are: (" + x1 + ", " + y1 + ") and (" + x2 + ", " + y2 + ")\n" +
+                "The equation of the line between these points is: " + equation() + "\n" +
+                "The y-intercept of this line is: " + yIntercept() + "\n" +
+                "The slope of this line is: " + Slope() + "\n" +
+                "The distance between these points is " + Distance() + "\n";
+    }
+
+
 }

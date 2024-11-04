@@ -23,5 +23,6 @@ public class LinearEquationLogic {
         System.out.println("Enter y2");
         int y2a = myScanner.nextInt();
         LinearEquation line = new LinearEquation(x1a, y1a, x2a, y2a);
+        System.out.println("Points created!");
     }
 }
