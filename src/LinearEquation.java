@@ -35,20 +35,21 @@ public class LinearEquation {
     }
 
     public double yIntercept() {
-        yInt= y1 - slope * x1;
-        return roundedToHundredth(yInt);
+        yInt= y2 - (Slope() * x2);
+        yInt = roundedToHundredth(yInt);
+        return yInt;
     }
 
     public String equation() {
         String equation = "";
         if (y1 == y2) {
-            equation = "y = " + yInt;
+            equation = "y = " + yIntercept();
         } else {
-            equation = slope + "x";
+            equation = Slope() + "x";
             if (yInt > 0) {
-                equation += "+" + yInt;
+                equation += "+" + yIntercept();
             } else {
-                equation += " " + yInt;
+                equation += "" + yIntercept();
             }
         }
         return equation;
@@ -67,7 +68,7 @@ public class LinearEquation {
        yCord = roundedToHundredth(yCord);
        String stringYCord = Double.toString(yCord);
        String stringX = Double.toString(x);
-       return (stringX + " , " + stringYCord);
+       return ( "Coordinate for x: " + "(" + stringX + " , " + stringYCord + ")");
     }
 
 }

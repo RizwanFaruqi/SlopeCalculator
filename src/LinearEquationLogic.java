@@ -16,30 +16,27 @@ public class LinearEquationLogic {
     private void Welcome() {
         boolean continueProgram = true;
         while (continueProgram) {
-            System.out.print("Enter x1");
-            String x1a = myScanner.nextLine();
-            System.out.print("Enter y1");
-            String y1a = myScanner.nextLine();
-            System.out.print("Enter x2");
-            String x2a = myScanner.nextLine();
-            System.out.println("Enter y2");
-            String y2a = myScanner.nextLine();
-            int intX1 = Integer.parseInt(x1a);
-            int intY1 = Integer.parseInt(y1a);
-            int intX2 = Integer.parseInt(x2a);
-            int intY2 = Integer.parseInt(y2a);
+            System.out.print("Enter coordinates for point 1 in the format (x1,y1): ");
+            String point1 = myScanner.nextLine();
+            System.out.print("Enter coordinates for point 2 in the format (x2,y2): ");
+            String point2 = myScanner.nextLine();
+            int intX1 = Integer.parseInt(point1.substring(1, point1.indexOf(',')));
+            int intY1 = Integer.parseInt(point1.substring(point1.indexOf(',') + 1, point1.length() - 1));
+            int intX2 = Integer.parseInt(point2.substring(1, point2.indexOf(',')));
+            int intY2 = Integer.parseInt(point2.substring(point2.indexOf(',') + 1, point2.length() - 1));
             LinearEquation line = new LinearEquation(intX1, intY1, intX2, intY2);
-            System.out.println("Points created!");
             System.out.println(line.lineInfo());
-            System.out.println("Enter a new x value");
+            System.out.print("Enter a new x value: ");
             double xAsked = myScanner.nextDouble();
-            line.coordinateForX(xAsked);
-            System.out.println("Do you want to keep going");
+            myScanner.nextLine();
+            System.out.println(line.coordinateForX(xAsked));
+            System.out.print("Do you want to keep going? (yes/no): ");
             String keepGoing = myScanner.nextLine();
             if (keepGoing.equalsIgnoreCase("yes")) {
                 continueProgram = true;
             } else {
                 continueProgram = false;
+                System.out.println("Thank you for using the slope calculator, goodbye!");
             }
         }
     }
