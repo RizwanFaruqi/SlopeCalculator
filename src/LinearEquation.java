@@ -41,16 +41,16 @@ public class LinearEquation {
     }
 
     public String equation() {
+        int deltaY = y2 - y1;
+        int deltaX = x2 - x1;
         String equation = "";
-        if (y1 == y2) {
-            equation = "y = " + yIntercept();
+        String slopeString = "";
+        if (deltaX == 0) {
+            slopeString = "undefined";
+            equation = "undefined";
         } else {
-            equation = Slope() + "x";
-            if (yInt > 0) {
-                equation += "+" + yIntercept();
-            } else {
-                equation += "" + yIntercept();
-            }
+            slopeString = deltaY + "/" + deltaX;
+            equation = "y = " + slopeString + "x + " + roundedToHundredth(yIntercept());
         }
         return equation;
     }
